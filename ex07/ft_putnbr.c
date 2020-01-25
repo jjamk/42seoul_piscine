@@ -1,28 +1,46 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: skang <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/25 21:24:33 by skang             #+#    #+#             */
+/*   Updated: 2020/01/25 21:33:30 by skang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-void ft_devide(int d){
+void	ft_devide(int d)
+{
+	long i;
 	char c[10];
-	int i;
-	while (d>0){
-		c[i]=d%10+'0';
-		d=d/10;
+
+	i = 0;
+	while (d > 0)
+	{
+		c[i] = d % 10 + '0';
+		d = d / 10;
 		i++;
 	}
-	while (i>=0){
-		write(1,&c[i],1);
+	while (i >= 0)
+	{
+		write(1, &c[i], 1);
 		i--;
 	}
 }
-				
-void ft_putnbr(int nb) {
+
+void	ft_putnbr(int nb)
+{
 	if (nb == -2147483648)
-		write(1,"-2147483648",11);
-	else if (nb <0)
+		write(1, "-2147483648", 11);
+	else if (nb < 0)
 	{
-		write(1,"-",1);
-		nb=-nb;
+		write(1, "-", 1);
+		nb = -nb;
 		ft_devide(nb);
 	}
-	else 
+	else
 		ft_devide(nb);
 }
